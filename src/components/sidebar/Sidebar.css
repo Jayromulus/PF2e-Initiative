@@ -1,0 +1,30 @@
+.icon-center {
+  text-align: center;
+}
+
+.sidebar-icon {
+  margin-top: 1rem;
+}
+
+.sidebar-text {
+  font-weight: bold;
+  font-size: 1.35rem;
+  padding-left: 1rem;
+}
+
+.icon-text {
+  font-weight: bold;
+  font-size: 1.35rem;
+  padding-left: 2rem;
+}
+
+.sidebar {
+  overflow-y: scroll;
+  max-height: 100vh;
+  padding-top: 1rem;
+  margin-right: 1rem;
+}
+
+.condition-icon {
+  margin-top: .75rem;
+}
