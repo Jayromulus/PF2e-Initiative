@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PF2e-Initiative/static/css/main.e2105364.css",
-    "main.js": "/PF2e-Initiative/static/js/main.eb01a122.js",
+    "main.css": "/PF2e-Initiative/static/css/main.c0552ddd.css",
+    "main.js": "/PF2e-Initiative/static/js/main.872e5b53.js",
     "static/js/787.d178e6d9.chunk.js": "/PF2e-Initiative/static/js/787.d178e6d9.chunk.js",
     "static/media/paralysed.png": "/PF2e-Initiative/static/media/paralysed.7e098c1697124770407b.png",
     "static/media/dazzled.png": "/PF2e-Initiative/static/media/dazzled.7b612017e81c9e14e14c.png",
@@ -46,12 +46,12 @@
     "static/media/blinded.png": "/PF2e-Initiative/static/media/blinded.18dd7cf1dab084911eeb.png",
     "static/media/fatigued.png": "/PF2e-Initiative/static/media/fatigued.2e9f9043479638167ef9.png",
     "index.html": "/PF2e-Initiative/index.html",
-    "main.e2105364.css.map": "/PF2e-Initiative/static/css/main.e2105364.css.map",
-    "main.eb01a122.js.map": "/PF2e-Initiative/static/js/main.eb01a122.js.map",
+    "main.c0552ddd.css.map": "/PF2e-Initiative/static/css/main.c0552ddd.css.map",
+    "main.872e5b53.js.map": "/PF2e-Initiative/static/js/main.872e5b53.js.map",
     "787.d178e6d9.chunk.js.map": "/PF2e-Initiative/static/js/787.d178e6d9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2105364.css",
-    "static/js/main.eb01a122.js"
+    "static/css/main.c0552ddd.css",
+    "static/js/main.872e5b53.js"
   ]
 }
