@@ -16,6 +16,7 @@ const theme = createTheme({
       highHealth: "#11BA36",
       midHealth: "#FF9900",
       lowHealth: "#DB2E2E",
+      dying: "#282828",
       bossHealth: "#9637C3",
       healthBG: "#838383",
     },

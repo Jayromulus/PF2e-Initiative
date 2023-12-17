@@ -14,7 +14,7 @@ function HealthBar({ current, max, boss }) {
         mb: 3,
         mx: 3,
         borderRadius: '1rem', 
-        bgcolor: 'background.healthBG',
+        bgcolor: percent > 0 ? 'background.healthBG' : 'background.dying',
         [`& .${linearProgressClasses.bar}`]: {
           bgcolor: boss ? 'background.bossHealth' : original > 100 ? 'background.overheal' :original > 75 ? 'background.highHealth' : original > 33 ? 'background.midHealth' : 'background.lowHealth'
         }
@@ -22,4 +22,4 @@ function HealthBar({ current, max, boss }) {
   )
 }
 
-export default HealthBar
+export default HealthBar;

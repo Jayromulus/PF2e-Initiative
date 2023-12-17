@@ -231,6 +231,6 @@ const conditions = {
     name: "Wounded",
     img: wounded
   },
-}
+};
 
-export default conditions
+export default conditions;
