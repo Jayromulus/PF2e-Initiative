@@ -12,10 +12,12 @@ const theme = createTheme({
       main: "#350949",
       card: "#F0B4FF",
       lifeBar: "#FFFFFF",
+      overheal: '#FBFF31',
       highHealth: "#11BA36",
       midHealth: "#FF9900",
       lowHealth: "#DB2E2E",
-      bossHealth: "#838383"
+      bossHealth: "#9637C3",
+      healthBG: "#838383",
     },
     mode: "dark",
     success: {
@@ -25,6 +27,7 @@ const theme = createTheme({
     text: {
       primary: "#173A5E",
       secondary: "#46505A",
+      black: "#000000",
     },
   },
 });

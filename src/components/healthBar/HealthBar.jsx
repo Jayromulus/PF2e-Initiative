@@ -2,6 +2,8 @@ import { LinearProgress, Container, linearProgressClasses } from "@mui/material"
 
 function HealthBar({ current, max, boss }) {
   let percent = (current / max) * 100;
+  let original = percent;
+  if (percent > 100) percent = 100;
 
   return (
     <LinearProgress 
@@ -9,12 +11,12 @@ function HealthBar({ current, max, boss }) {
       value={percent} 
       sx={{ 
         height: '1.5rem', 
-        my: 3,
+        mb: 3,
         mx: 3,
         borderRadius: '1rem', 
-        bgcolor: 'background.bossHealth',
+        bgcolor: 'background.healthBG',
         [`& .${linearProgressClasses.bar}`]: {
-          bgcolor: boss ? 'background.bossHealth' : percent > 75 ? 'background.highHealth' : percent > 33 ? 'background.midHealth' : 'background.lowHealth'
+          bgcolor: boss ? 'background.bossHealth' : original > 100 ? 'background.overheal' :original > 75 ? 'background.highHealth' : original > 33 ? 'background.midHealth' : 'background.lowHealth'
         }
       }} />
   )
