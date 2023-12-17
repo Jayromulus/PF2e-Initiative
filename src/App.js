@@ -1,6 +1,7 @@
 import "./App.css";
 import Home from "./views/home/Home";
-import { ThemeProvider, createTheme } from "@mui/system";
+import { ThemeProvider } from "@mui/system";
+import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -19,6 +20,7 @@ const theme = createTheme({
     mode: "dark",
     success: {
       dark: "#009688",
+      main: "#009688"
     },
     text: {
       primary: "#173A5E",
