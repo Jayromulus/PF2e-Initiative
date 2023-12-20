@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Currently being prototyped and designed to be displayed on a 1080p projector for the intended purpose
 
 ## Available Scripts
 

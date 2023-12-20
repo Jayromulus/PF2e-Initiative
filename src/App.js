@@ -5,6 +5,15 @@ import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   palette: {
+    highHealth: {
+      main: '#11BA36'
+    },
+    midHealth: {
+      main: '#FF9900'
+    },
+    lowHealth: {
+      main: '#DB2E2E'
+    },
     action: {
       active: "#001E3C",
     },
@@ -17,10 +26,10 @@ const theme = createTheme({
       midHealth: "#FF9900",
       lowHealth: "#DB2E2E",
       dying: "#282828",
-      bossHealth: "#9637C3",
+      npcHealth: "#9637C3",
       healthBG: "#838383",
     },
-    mode: "dark",
+    mode: "light",
     success: {
       dark: "#009688",
       main: "#009688"
@@ -28,7 +37,13 @@ const theme = createTheme({
     text: {
       primary: "#173A5E",
       secondary: "#46505A",
+      main: '#350949',
       black: "#000000",
+      light: "#fdfdfd",
+    },
+    main: {
+      dark: '#350949',
+      light: '#350949',
     },
   },
 });
@@ -36,7 +51,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <Home sx={{ color: 'text.primary' }} />
     </ThemeProvider>
   );
 }

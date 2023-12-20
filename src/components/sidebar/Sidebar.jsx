@@ -22,7 +22,7 @@ function Sidebar() {
 
       <hr style={{ width: '85%', marginRight: '2.5rem' }} />
 
-      <Grid container sx={{ pb: 3 }}>
+      <Grid container sx={{ pb: 4 }}>
         {
           Object.keys(conditions).map((cond, ind) => {
             let current = conditions[cond];
@@ -36,6 +36,12 @@ function Sidebar() {
             )
           })
         }
+      </Grid>
+
+      <hr style={{ width: '85%', marginRight: '2.5rem' }} />
+
+      <Grid container sx={{ pb: 4 }}>
+        <p style={{ paddingLeft: '1.6em' }}>Status icons come from <a href="https://www.reddit.com/r/Pathfinder2e/comments/g19a98/roll20_token_markers_pathfinder_2e_conditions/" target="_blank" rel="noreferrer">this reddit post by FatMani</a></p>
       </Grid>
     </div>
   )

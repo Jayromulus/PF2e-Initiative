@@ -1,6 +1,6 @@
 import { LinearProgress, Container, linearProgressClasses } from "@mui/material"
 
-function HealthBar({ current, max, boss }) {
+function HealthBar({ current, max, npc }) {
   let percent = (current / max) * 100;
   let original = percent;
   if (percent > 100) percent = 100;
@@ -16,7 +16,7 @@ function HealthBar({ current, max, boss }) {
         borderRadius: '1rem', 
         bgcolor: percent > 0 ? 'background.healthBG' : 'background.dying',
         [`& .${linearProgressClasses.bar}`]: {
-          bgcolor: boss ? 'background.bossHealth' : original > 100 ? 'background.overheal' :original > 75 ? 'background.highHealth' : original > 33 ? 'background.midHealth' : 'background.lowHealth'
+          bgcolor: npc ? 'background.npcHealth' : original > 100 ? 'background.overheal' :original > 66 ? 'background.highHealth' : original > 33 ? 'background.midHealth' : 'background.lowHealth'
         }
       }} />
   )
