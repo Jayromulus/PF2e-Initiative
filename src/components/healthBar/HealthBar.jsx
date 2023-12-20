@@ -1,4 +1,4 @@
-import { LinearProgress, Container, linearProgressClasses } from "@mui/material"
+import { LinearProgress, linearProgressClasses } from "@mui/material"
 
 function HealthBar({ current, max, npc }) {
   let percent = (current / max) * 100;

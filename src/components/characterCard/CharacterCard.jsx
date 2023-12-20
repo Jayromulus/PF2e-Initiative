@@ -1,10 +1,10 @@
-import { Card, Dialog, DialogContent, Grid } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 import HealthBar from "../healthBar/HealthBar";
 import './CharacterCard.css';
 import conditions from '../data/conditions';
-import EditIcon from '@mui/icons-material/Edit';
+// import EditIcon from '@mui/icons-material/Edit';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import { useRef, useState, Fragment } from "react";
+import { useState } from "react";
 import CharacterEdit from "./characterEdit/CharacterEdit";
 
 // name, current and max hp, condition list, some way to edit the hp and some way to move the card(?)

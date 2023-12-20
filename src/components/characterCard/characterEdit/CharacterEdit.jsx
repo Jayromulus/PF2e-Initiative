@@ -1,9 +1,9 @@
 import { Button, Dialog, DialogContent, Grid, Slider, TextField } from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useState } from "react";
+// import { useState } from "react";
 
 function CharacterEdit({ editDisplay, handleClose, character, update }) {
-  const [confirm, , setConfirm,] = useState(false)
+  // const [confirm, , setConfirm,] = useState(false)
 
   function confirmDelete() {
     return
