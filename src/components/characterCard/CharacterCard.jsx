@@ -49,7 +49,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
           </Grid>
         </Grid>
         <Grid item xs={12} md={5}>
-          <Grid container sx={{ pb: 2 }}>
+          <Grid container sx={{ py: 2 }}>
             {Object.keys(conditions).filter((key, ind) => c_currentConditions?.includes(key)).map((cond, ind) =>
               <Grid key={ind} item xs={3} md={1} sx={{ textAlign: 'center'}}>
                 <img className="current-condition" src={conditions[cond].img} width="30" alt={conditions[cond].name} key={ind} />
