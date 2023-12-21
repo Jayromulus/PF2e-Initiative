@@ -7,7 +7,7 @@ function Home() {
   return (
     <Box sx={{ bgcolor: 'background.main', width: '100vw', height: '100vh', m: 0, color: 'text.black' }}>
       <Grid container sx={{ height: '100%' }}>
-        <Grid item xs={4} lg={3} sx={{ bgcolor: 'background.card',  pl: 4, pr: 0 }}>
+        <Grid item xs={4} lg={3} sx={{ bgcolor: 'background.card',  pl: 0, pr: 0 }}>
           <div>
             <Sidebar />
           </div>

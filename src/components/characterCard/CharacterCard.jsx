@@ -1,4 +1,4 @@
-import { Card, Grid } from "@mui/material";
+import { Card, Grid, useMediaQuery } from "@mui/material";
 import HealthBar from "../healthBar/HealthBar";
 import './CharacterCard.css';
 import conditions from '../data/conditions';
@@ -9,6 +9,8 @@ import CharacterEdit from "./characterEdit/CharacterEdit";
 
 // name, current and max hp, condition list, some way to edit the hp and some way to move the card(?)
 function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
+  const desktop = useMediaQuery('(min-width: 600px)');
+
   const [c_name, setName] = useState(name);
   const [c_currentHP, setCurrentHP] = useState(currentHP);
   const [c_maxHP, setMaxHP] = useState(maxHP);
@@ -28,30 +30,29 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
   }
 
   return characterInList ? (
-    <Card sx={{ bgcolor: 'background.card', color: 'text.black', mt: 4 }}>
+    <Card sx={{ bgcolor: 'background.card', color: 'text.black', my: 4 }}>
       <Grid container>
-        <Grid item xs={6} onClick={cardDisplay}>
+        {desktop && <Grid item xs={2} md={1}>
+          <DragIndicatorIcon sx={{ height: '100%', width: '50%', pl: 4 }} />
+        </Grid>}
+        <Grid item xs={12} md={6} onClick={cardDisplay}>
           <Grid container>
-            <Grid item xs={9} className='text-center'>
+            <Grid item xs={12} md={9} className='text-center'>
               <h2>{c_name}</h2>
             </Grid>
-            <Grid item xs={3} className='text-center'>
+            <Grid item xs={12} md={3} className='text-center'>
               {!c_npc && <h2 style={{ display: 'inline-block' }}>{c_currentHP}/{c_maxHP}</h2>}
-              {/* <EditIcon /> */}
             </Grid>
             <Grid item xs={12}>
               <HealthBar current={c_currentHP} max={c_maxHP} npc={c_npc} />
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={12} md={5}>
           {/* <h2>conditions</h2> */}
           {Object.keys(conditions).filter(key => c_currentConditions?.includes(key)).map((cond, ind) =>
             <img className="current-condition" src={conditions[cond].img} width="30" alt={conditions[cond].name} key={ind} />
           )}
-        </Grid>
-        <Grid item xs={1}>
-          <DragIndicatorIcon sx={{ height: '100%', width: '50%', pl: 4 }} />
         </Grid>
       </Grid>
 

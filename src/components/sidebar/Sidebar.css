@@ -3,7 +3,7 @@
 }
 
 .sidebar-icon {
-  margin-top: 1rem;
+  margin: 1rem 0 1.5rem;
 }
 
 .sidebar-text {
@@ -22,9 +22,15 @@
   overflow-y: scroll;
   max-height: 100vh;
   padding-top: 1rem;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .condition-icon {
   margin-top: .75rem;
+}
+
+@media screen and (min-width: 1580px){
+  .sidebar {
+    padding-left: 2em;
+  }
 }

@@ -28,13 +28,13 @@ function CharacterEdit({ editDisplay, handleClose, character, update }) {
     >
       <DialogContent sx={{ bgcolor: 'background.card', px: 0, py: 6 }}>
         <Grid container>
-          <Grid item xs={10} sx={{ width: '100%', textAlign: 'center', pl: 2 }}>
+          <Grid item xs={9} md={10} sx={{ width: '100%', textAlign: 'center', pl: 2 }}>
             <TextField
               label="Name"
               variant='filled'
               value={character.name}
               onChange={e => update.name(e.target.value)}
-              sx={{ pb: 4, width: '90%' }}
+              sx={{ pb: 4, width: '95%' }}
             />
           </Grid>
 
@@ -49,7 +49,7 @@ function CharacterEdit({ editDisplay, handleClose, character, update }) {
             </Button>
           </Grid>
 
-          <Grid item xs={12} sx={{ px: 8 }} >
+          <Grid item xs={12} sx={{ px: 6 }} >
             {
               !character.npc ?
               <Slider
