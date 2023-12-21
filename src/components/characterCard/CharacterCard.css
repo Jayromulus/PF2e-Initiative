@@ -3,7 +3,7 @@
 }
 
 .current-condition {
-  margin: .75rem .5rem 0;
+  /* margin: .75rem .5rem 0; */
 }
 
 @media screen and (max-width: 599px) {
