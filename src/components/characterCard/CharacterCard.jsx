@@ -1,7 +1,7 @@
 import { Card, Grid, useMediaQuery } from "@mui/material";
 import HealthBar from "../healthBar/HealthBar";
 import './CharacterCard.css';
-import conditions from '../data/conditions';
+import conditions from '../../data/conditions';
 // import EditIcon from '@mui/icons-material/Edit';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useState } from "react";

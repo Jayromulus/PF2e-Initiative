@@ -70,15 +70,14 @@ const conditions = {
     name: "Controlled",
     img: controlled
   },
-  cover: {
-    name: "Cover",
-    img: cover
-  },
+  // cover: {
+  //   name: "Cover",
+  //   img: cover
+  // },
   dazzled: {
     name: "Dazzled",
     img: dazzled
   },
-  // !!!START CAPS HERE!!!
   deafened: {
     name: "Deafened",
     img: deafened
@@ -127,10 +126,10 @@ const conditions = {
     name: "Fleeing",
     img: fleeing
   },
-  friendly: {
-    name: "Friendly",
-    img: friendly
-  },
+  // friendly: {
+  //   name: "Friendly",
+  //   img: friendly
+  // },
   frightened: {
     name: "Frightened",
     img: frightened
@@ -139,30 +138,30 @@ const conditions = {
     name: "Grabbed",
     img: grabbed
   },
-  greaterCover: {
-    name: "Greater Cover",
-    img: greaterCover
-  },
-  helpful: {
-    name: "Helpful",
-    img: helpful
-  },
+  // greaterCover: {
+  //   name: "Greater Cover",
+  //   img: greaterCover
+  // },
+  // helpful: {
+  //   name: "Helpful",
+  //   img: helpful
+  // },
   hidden: {
     name: "Hidden",
     img: hidden
   },
-  hostile: {
-    name: "Hostile",
-    img: hostile
-  },
+  // hostile: {
+  //   name: "Hostile",
+  //   img: hostile
+  // },
   immobilised: {
     name: "Immobilised",
     img: immobilised
   },
-  indiffrent: {
-    name: "Indiffrent",
-    img: indiffrent
-  },
+  // indiffrent: {
+  //   name: "Indiffrent",
+  //   img: indiffrent
+  // },
   invisible: {
     name: "Invisible",
     img: invisible
@@ -183,18 +182,18 @@ const conditions = {
     name: "Prone",
     img: prone
   },
-  quickened: {
-    name: "Quickened",
-    img: quickened
-  },
+  // quickened: {
+  //   name: "Quickened",
+  //   img: quickened
+  // },
   restrained: {
     name: "Restrained",
     img: restrained
   },
-  shieldRaised: {
-    name: "Shield Raised",
-    img: shieldRaised
-  },
+  // shieldRaised: {
+  //   name: "Shield Raised",
+  //   img: shieldRaised
+  // },
   sickened: {
     name: "Sickened",
     img: sickened
@@ -215,18 +214,18 @@ const conditions = {
     name: "Unconscious",
     img: unconscious
   },
-  undetected: {
-    name: "Undetected",
-    img: undetected
-  },
-  unfriendly: {
-    name: "Unfriendly",
-    img: unfriendly
-  },
-  unnoticed: {
-    name: "Unnoticed",
-    img: unnoticed
-  },
+  // undetected: {
+  //   name: "Undetected",
+  //   img: undetected
+  // },
+  // unfriendly: {
+  //   name: "Unfriendly",
+  //   img: unfriendly
+  // },
+  // unnoticed: {
+  //   name: "Unnoticed",
+  //   img: unnoticed
+  // },
   wounded: {
     name: "Wounded",
     img: wounded
