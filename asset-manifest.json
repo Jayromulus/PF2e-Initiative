@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PF2e-Initiative/static/css/main.01a9c20d.css",
-    "main.js": "/PF2e-Initiative/static/js/main.d8d03f8c.js",
+    "main.js": "/PF2e-Initiative/static/js/main.9279ef94.js",
     "static/js/787.d178e6d9.chunk.js": "/PF2e-Initiative/static/js/787.d178e6d9.chunk.js",
     "static/media/paralysed.png": "/PF2e-Initiative/static/media/paralysed.7e098c1697124770407b.png",
     "static/media/dazzled.png": "/PF2e-Initiative/static/media/dazzled.7b612017e81c9e14e14c.png",
@@ -47,11 +47,11 @@
     "static/media/fatigued.png": "/PF2e-Initiative/static/media/fatigued.2e9f9043479638167ef9.png",
     "index.html": "/PF2e-Initiative/index.html",
     "main.01a9c20d.css.map": "/PF2e-Initiative/static/css/main.01a9c20d.css.map",
-    "main.d8d03f8c.js.map": "/PF2e-Initiative/static/js/main.d8d03f8c.js.map",
+    "main.9279ef94.js.map": "/PF2e-Initiative/static/js/main.9279ef94.js.map",
     "787.d178e6d9.chunk.js.map": "/PF2e-Initiative/static/js/787.d178e6d9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.01a9c20d.css",
-    "static/js/main.d8d03f8c.js"
+    "static/js/main.9279ef94.js"
   ]
 }
