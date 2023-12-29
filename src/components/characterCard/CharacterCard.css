@@ -2,9 +2,9 @@
   text-align: center;
 }
 
-.current-condition {
-  /* margin: .75rem .5rem 0; */
-}
+/* .current-condition {
+  margin: .75rem .5rem 0;
+} */
 
 @media screen and (max-width: 599px) {
   .text-center {

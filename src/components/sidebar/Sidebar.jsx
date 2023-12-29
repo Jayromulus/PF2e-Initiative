@@ -1,7 +1,7 @@
 import conditions from "../../data/conditions"
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import { Divider, Grid, useMediaQuery } from "@mui/material";
+import { Grid, useMediaQuery } from "@mui/material";
 import './Sidebar.css';
 
 function Sidebar() {

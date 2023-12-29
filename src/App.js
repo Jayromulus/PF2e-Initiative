@@ -14,6 +14,9 @@ const theme = createTheme({
     lowHealth: {
       main: '#DB2E2E'
     },
+    dying: {
+      main: '#282828'
+    },
     action: {
       active: "#001E3C",
     },

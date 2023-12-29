@@ -6,6 +6,8 @@ import conditions from '../../data/conditions';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useState } from "react";
 import CharacterEdit from "./characterEdit/CharacterEdit";
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // name, current and max hp, condition list, some way to edit the hp and some way to move the card(?)
 function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
@@ -21,7 +23,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
   const [editDisplay, setEditDisplay] = useState(false);
 
   function cardDisplay() {
-    console.log(c_name);
+    // console.log(c_name);
     setEditDisplay(true);
   }
 
@@ -32,9 +34,15 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
   return characterInList ? (
     <Card sx={{ bgcolor: 'background.card', color: 'text.black', my: 4 }}>
       <Grid container>
-        {desktop && <Grid item xs={2} md={1}>
+        {/* {desktop && <Grid item xs={2} md={1}>
           <DragIndicatorIcon sx={{ height: '100%', width: '50%', pl: 4 }} />
-        </Grid>}
+        </Grid>} */}
+        <Grid item xs={2} md={1}>
+          <Grid container direction='column' alignItems='center' sx={{ height: '100%' }}>
+            <Grid alignItems='center' item xs={6}><KeyboardArrowUpIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
+            <Grid alignItems='center' item xs={6}><KeyboardArrowDownIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
+          </Grid>
+        </Grid>
         <Grid item xs={12} md={6} onClick={cardDisplay}>
           <Grid container>
             <Grid item xs={12} md={9} className='text-center'>
@@ -49,8 +57,8 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
           </Grid>
         </Grid>
         <Grid item xs={12} md={5}>
-          <Grid container sx={{ py: 2 }}>
-            {Object.keys(conditions).filter((key, ind) => c_currentConditions?.includes(key)).map((cond, ind) =>
+          <Grid container sx={{ py: 2 }} onClick={() => setCurrentConditions(c_currentConditions)}>
+            {Object.keys(conditions).filter(key => c_currentConditions?.includes(key)).map((cond, ind) =>
               <Grid key={ind} item xs={3} md={1} sx={{ textAlign: 'center'}}>
                 <img className="current-condition" src={conditions[cond].img} width="30" alt={conditions[cond].name} key={ind} />
               </Grid>
