@@ -10,7 +10,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // name, current and max hp, condition list, some way to edit the hp and some way to move the card(?)
-function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
+function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updatePosition }) {
   const desktop = useMediaQuery('(min-width: 600px)');
 
   const [c_name, setName] = useState(name);
@@ -23,7 +23,6 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
   const [editDisplay, setEditDisplay] = useState(false);
 
   function cardDisplay() {
-    // console.log(c_name);
     setEditDisplay(true);
   }
 
@@ -39,7 +38,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions }) {
         </Grid>} */}
         <Grid item xs={2} md={1}>
           <Grid container direction='column' alignItems='center' sx={{ height: '100%' }}>
-            <Grid alignItems='center' item xs={6}><KeyboardArrowUpIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
+            <Grid alignItems='center' item xs={6} onClick={ updatePosition }><KeyboardArrowUpIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
             <Grid alignItems='center' item xs={6}><KeyboardArrowDownIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
           </Grid>
         </Grid>
