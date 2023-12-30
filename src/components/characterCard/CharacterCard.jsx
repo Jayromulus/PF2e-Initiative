@@ -5,12 +5,12 @@ import conditions from '../../data/conditions';
 // import EditIcon from '@mui/icons-material/Edit';
 // import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useState, useEffect } from "react";
-import CharacterEdit from "./characterEdit/CharacterEdit";
+import EditCharacter from "./characterEdit/EditCharacter";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // name, current and max hp, condition list, some way to edit the hp and some way to move the card(?)
-function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updatePosition }) {
+function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updatePosition, removeFromList }) {
   // const desktop = useMediaQuery('(min-width: 600px)');
 
   const [c_name, setName] = useState(name);
@@ -19,9 +19,10 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
   const [c_npc, setNPC] = useState(npc);
   const [c_currentConditions, setCurrentConditions] = useState(currentConditions);
   // set to false on character remove drag to remove from display (might not be the best)
-  const [characterInList, setCharacterInList] = useState(true);
+  // const [characterInList, setCharacterInList] = useState(true);
   const [editDisplay, setEditDisplay] = useState(false);
 
+  // for some reason this is required in order to update the cards. I really have no idea why this would be necessary but Jojo and Borg say it could be something to do with the mounted cards having access to the states which are not being updated when the array proper is being updated, which is stopping the re-render
   useEffect(() => { setName(name); }, [name]);
   useEffect(() => { setCurrentHP(currentHP); }, [currentHP]);
   useEffect(() => { setMaxHP(maxHP); }, [maxHP]);
@@ -36,7 +37,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
     setEditDisplay(false);
   }
 
-  return characterInList ? (
+  return (
     <Card sx={{ bgcolor: 'background.card', color: 'text.black', my: 4 }}>
       <Grid container>
         {/* {desktop && <Grid item xs={2} md={1}>
@@ -76,7 +77,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
         </Grid>
       </Grid>
 
-      <CharacterEdit
+      <EditCharacter
         editDisplay={editDisplay}
         handleClose={handleClose}
         character={{
@@ -90,10 +91,10 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
           currentHP: setCurrentHP,
           maxHP: setMaxHP,
           npc: setNPC,
-          delete: () => setCharacterInList(false)
+          delete: removeFromList
         }} />
     </Card>
-  ) : null
+  )
 }
 
-export default CharacterCard
+export default CharacterCard;

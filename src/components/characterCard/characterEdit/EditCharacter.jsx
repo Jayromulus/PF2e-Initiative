@@ -1,14 +1,7 @@
 import { Button, Dialog, DialogContent, Grid, Slider, TextField } from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-// import { useState } from "react";
 
-function CharacterEdit({ editDisplay, handleClose, character, update }) {
-  // const [confirm, , setConfirm,] = useState(false)
-
-  function confirmDelete() {
-    return
-  }
-
+function EditCharacter({ editDisplay, handleClose, character, update }) {
   function formatLabel() {
     return character.currentHP;
   }
@@ -28,7 +21,7 @@ function CharacterEdit({ editDisplay, handleClose, character, update }) {
     >
       <DialogContent sx={{ bgcolor: 'background.card', px: 0, py: 6 }}>
         <Grid container>
-          <Grid item xs={9} md={10} sx={{ width: '100%', textAlign: 'center', pl: 2 }}>
+          <Grid item xs={9} md={7} sx={{ width: '100%', textAlign: 'center', pl: 4 }}>
             <TextField
               label="Name"
               variant='filled'
@@ -38,14 +31,25 @@ function CharacterEdit({ editDisplay, handleClose, character, update }) {
             />
           </Grid>
 
-          <Grid item xs={1} sx={{ textAlign: 'center', justifyContent: 'center' }}>
+          <Grid item xs={9} md={3} sx={{ width: '100%', textAlign: 'center', pl: 2 }}>
+            <TextField
+              label="Max HP"
+              variant='filled'
+              value={character.maxHP}
+              onChange={e => update.maxHP(e.target.value)}
+              sx={{ pb: 4, width: '95%' }}
+            />
+          </Grid>
+
+          <Grid item xs={1} sx={{ textAlign: 'center', justifyContent: 'center', pl: 4 }}>
             <Button
               variant="contained"
               color="main"
               style={{ width: '100%', height: '65%' }}
               sx={{ color: 'background.main', ':hover': { color: 'background.card' } }}
+              onClick={ () => { update.delete(); handleClose(); } }
             >
-              <DeleteForeverIcon onClick={confirmDelete} />
+              <DeleteForeverIcon />
             </Button>
           </Grid>
 
@@ -102,4 +106,4 @@ function CharacterEdit({ editDisplay, handleClose, character, update }) {
   )
 }
 
-export default CharacterEdit;
+export default EditCharacter;
