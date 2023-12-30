@@ -1,17 +1,17 @@
-import { Card, Grid, useMediaQuery } from "@mui/material";
+import { Card, Grid /*, useMediaQuery */} from "@mui/material";
 import HealthBar from "../healthBar/HealthBar";
 import './CharacterCard.css';
 import conditions from '../../data/conditions';
 // import EditIcon from '@mui/icons-material/Edit';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import { useState } from "react";
+// import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { useState, useEffect } from "react";
 import CharacterEdit from "./characterEdit/CharacterEdit";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // name, current and max hp, condition list, some way to edit the hp and some way to move the card(?)
 function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updatePosition }) {
-  const desktop = useMediaQuery('(min-width: 600px)');
+  // const desktop = useMediaQuery('(min-width: 600px)');
 
   const [c_name, setName] = useState(name);
   const [c_currentHP, setCurrentHP] = useState(currentHP);
@@ -21,6 +21,12 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
   // set to false on character remove drag to remove from display (might not be the best)
   const [characterInList, setCharacterInList] = useState(true);
   const [editDisplay, setEditDisplay] = useState(false);
+
+  useEffect(() => { setName(name); }, [name]);
+  useEffect(() => { setCurrentHP(currentHP); }, [currentHP]);
+  useEffect(() => { setMaxHP(maxHP); }, [maxHP]);
+  useEffect(() => { setNPC(npc); }, [npc]);
+  useEffect(() => { setCurrentConditions(currentConditions); }, [currentConditions]);
 
   function cardDisplay() {
     setEditDisplay(true);
@@ -38,8 +44,8 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
         </Grid>} */}
         <Grid item xs={2} md={1}>
           <Grid container direction='column' alignItems='center' sx={{ height: '100%' }}>
-            <Grid alignItems='center' item xs={6} onClick={ updatePosition }><KeyboardArrowUpIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
-            <Grid alignItems='center' item xs={6}><KeyboardArrowDownIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
+            <Grid alignItems='center' item xs={6} onClick={ () => updatePosition('up') }><KeyboardArrowUpIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
+            <Grid alignItems='center' item xs={6} onClick={ () => updatePosition('down') }><KeyboardArrowDownIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
           </Grid>
         </Grid>
         <Grid item xs={12} md={6} onClick={cardDisplay}>

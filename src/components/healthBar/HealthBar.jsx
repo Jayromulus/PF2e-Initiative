@@ -4,7 +4,7 @@ function HealthBar({ current, max, npc }) {
   let percent = (current / max) * 100;
   let original = percent;
   if (percent > 100) percent = 100;
-  // console.log({ original })
+  if (npc) percent = 100;
 
   return (
     <LinearProgress 
@@ -28,8 +28,9 @@ function HealthBar({ current, max, npc }) {
               'background.highHealth' : 
             original > 33 ? 
               'background.midHealth' : 
-              'background.lowHealth'
-        }
+              'background.lowHealth',
+          transition: "none"
+        },
       }} />
   )
 }

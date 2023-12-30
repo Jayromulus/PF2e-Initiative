@@ -30,6 +30,8 @@ const characters = [
   {
     name: "NPC",
     currentConditions: ['greaterCover'],
+    currentHP: 1,
+    maxHP: 1,
     npc: true
   },
 ];
