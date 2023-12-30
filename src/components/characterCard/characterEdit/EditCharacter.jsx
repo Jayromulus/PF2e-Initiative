@@ -21,7 +21,7 @@ function EditCharacter({ editDisplay, handleClose, character, update }) {
     >
       <DialogContent sx={{ bgcolor: 'background.card', px: 0, py: 6 }}>
         <Grid container>
-          <Grid item xs={9} md={7} sx={{ width: '100%', textAlign: 'center', pl: 4 }}>
+          <Grid item xs={12} md={7} sx={{ width: '100%', textAlign: 'center', pl: 4 }}>
             <TextField
               label="Name"
               variant='filled'
@@ -31,7 +31,7 @@ function EditCharacter({ editDisplay, handleClose, character, update }) {
             />
           </Grid>
 
-          <Grid item xs={9} md={3} sx={{ width: '100%', textAlign: 'center', pl: 2 }}>
+          <Grid item xs={12} md={3} sx={{ width: '100%', textAlign: 'center', pl: 2 }}>
             <TextField
               label="Max HP"
               variant='filled'
