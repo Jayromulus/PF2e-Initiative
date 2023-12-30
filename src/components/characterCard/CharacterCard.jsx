@@ -1,4 +1,4 @@
-import { Card, Grid /*, useMediaQuery */} from "@mui/material";
+import { Card, Grid /*, useMediaQuery */ } from "@mui/material";
 import HealthBar from "../healthBar/HealthBar";
 import './CharacterCard.css';
 import conditions from '../../data/conditions';
@@ -44,30 +44,34 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
         </Grid>} */}
         <Grid item xs={2} md={1}>
           <Grid container direction='column' alignItems='center' sx={{ height: '100%' }}>
-            <Grid alignItems='center' item xs={6} onClick={ () => updatePosition('up') }><KeyboardArrowUpIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
-            <Grid alignItems='center' item xs={6} onClick={ () => updatePosition('down') }><KeyboardArrowDownIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
+            <Grid alignItems='center' item xs={6} onClick={() => updatePosition('up')}><KeyboardArrowUpIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
+            <Grid alignItems='center' item xs={6} onClick={() => updatePosition('down')}><KeyboardArrowDownIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={6} onClick={cardDisplay}>
+        <Grid item xs={10}>
           <Grid container>
-            <Grid item xs={12} md={9} className='text-center'>
-              <h2>{c_name}</h2>
-            </Grid>
-            <Grid item xs={12} md={3} className='text-center'>
-              {!c_npc && <h2 style={{ display: 'inline-block' }}>{c_currentHP}/{c_maxHP}</h2>}
-            </Grid>
-            <Grid item xs={12}>
-              <HealthBar current={c_currentHP} max={c_maxHP} npc={c_npc} />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <Grid container sx={{ py: 2 }} onClick={() => setCurrentConditions(c_currentConditions)}>
-            {Object.keys(conditions).filter(key => c_currentConditions?.includes(key)).map((cond, ind) =>
-              <Grid key={ind} item xs={3} md={1} sx={{ textAlign: 'center'}}>
-                <img className="current-condition" src={conditions[cond].img} width="30" alt={conditions[cond].name} key={ind} />
+            <Grid item xs={12} md={6} onClick={cardDisplay}>
+              <Grid container>
+                <Grid item xs={12} md={9} className='text-center'>
+                  <h2>{c_name}</h2>
+                </Grid>
+                <Grid item xs={12} md={3} className='text-center'>
+                  {!c_npc && <h2 style={{ display: 'inline-block' }}>{c_currentHP}/{c_maxHP}</h2>}
+                </Grid>
+                <Grid item xs={12}>
+                  <HealthBar current={c_currentHP} max={c_maxHP} npc={c_npc} />
+                </Grid>
               </Grid>
-            )}
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <Grid container sx={{ py: 2 }} onClick={() => setCurrentConditions(c_currentConditions)}>
+                {Object.keys(conditions).filter(key => c_currentConditions?.includes(key)).map((cond, ind) =>
+                  <Grid key={ind} item xs={3} md={1} sx={{ textAlign: 'center' }}>
+                    <img className="current-condition" src={conditions[cond].img} width="30" alt={conditions[cond].name} key={ind} />
+                  </Grid>
+                )}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
