@@ -57,7 +57,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
             <Grid alignItems='center' item xs={6} onClick={() => updatePosition('down')}><KeyboardArrowDownIcon sx={{ width: '50px', height: '50px', pt: 0.5 }} /></Grid>
           </Grid>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={10} md={11}>
           <Grid container>
             {/* character name and health bar */}
             <Grid item xs={12} md={6} onClick={cardDisplay}>
