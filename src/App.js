@@ -40,6 +40,7 @@ const theme = createTheme({
     text: {
       primary: "#173A5E",
       secondary: "#46505A",
+      purple: "#0C113A",
       main: '#350949',
       black: "#000000",
       light: "#fdfdfd",

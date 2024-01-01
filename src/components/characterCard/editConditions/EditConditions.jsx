@@ -46,7 +46,8 @@ function EditConditions({ open, handleClose, character, update }) {
                       // filter: 
                         // character.conditions.includes(current.name.toLowerCase()) ? 'hue-rotate(90deg)' : 'hue-rotate(0deg)' 
                         // background: 'url(black.png)',
-                        filter: 'brightness(0.9) invert(.7) sepia(.9) hue-rotate(220deg) saturate(500%)'
+                        // filter: 'brightness(0.9) invert(.7) sepia(.9) hue-rotate(220deg) saturate(500%)'
+                        filter: 'invert(4%) sepia(82%) saturate(5032%) hue-rotate(235deg) brightness(94%) contrast(97%)'
                     }}
                     onClick={() => editList(current.name)}
                   />

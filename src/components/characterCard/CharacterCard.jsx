@@ -46,7 +46,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
   }
 
   return (
-    <Card sx={{ bgcolor: 'background.card', color: 'text.black', my: 4 }}>
+    <Card sx={{ bgcolor: 'background.card', color: 'text.purple', my: 4 }}>
       <Grid container>
         {/* {desktop && <Grid item xs={2} md={1}>
           <DragIndicatorIcon sx={{ height: '100%', width: '50%', pl: 4 }} />
@@ -62,10 +62,18 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
             {/* character name and health bar */}
             <Grid item xs={12} md={6} onClick={cardDisplay}>
               <Grid container>
-                <Grid item xs={12} md={9} className='text-center'>
+                <Grid item xs={12} md={9} className='text-center' 
+                // style={{
+                //   filter: 'invert(4%) sepia(82%) saturate(5032%) hue-rotate(235deg) brightness(94%) contrast(97%)'
+                // }}
+                >
                   <h2>{c_name}</h2>
                 </Grid>
-                <Grid item xs={12} md={3} className='text-center'>
+                <Grid item xs={12} md={3} className='text-center' 
+                // style={{
+                //   filter: 'invert(4%) sepia(82%) saturate(5032%) hue-rotate(235deg) brightness(94%) contrast(97%)'
+                // }}
+                >
                   {!c_npc && <h2 style={{ display: 'inline-block' }}>{c_currentHP}/{c_maxHP}</h2>}
                 </Grid>
                 <Grid item xs={12}>
@@ -78,15 +86,16 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
               <Grid container sx={{ py: 2, pr: 2 }} onClick={conditionsDisplay}>
                 {Object.keys(conditions).filter(key => c_currentConditions?.includes(key)).map((cond, ind) =>
                   <Grid key={ind} item xs={3} md={1} sx={{ textAlign: 'center' }}>
-                    <img 
-                      className="current-condition" 
-                      src={conditions[cond].img} 
-                      width="30" 
-                      alt={conditions[cond].name} 
-                      key={ind} 
-                      // style={{
-                      //   filter: 'brightness(0.9) invert(.7) sepia(.9) hue-rotate(210deg) saturate(1000%)'
-                      // }} 
+                    <img
+                      className="current-condition"
+                      src={conditions[cond].img}
+                      width="30"
+                      alt={conditions[cond].name}
+                      key={ind}
+                      style={{
+                        filter: 'invert(4%) sepia(82%) saturate(5032%) hue-rotate(235deg) brightness(94%) contrast(97%)'
+                        //   filter: 'brightness(0.9) invert(.7) sepia(.9) hue-rotate(210deg) saturate(1000%)'
+                      }}
                     />
                   </Grid>
                 )}
@@ -112,12 +121,12 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
           npc: setNPC,
           delete: removeFromList
         }} />
-      
-      <EditConditions 
-        open={ editConditions }
-        handleClose={ handleClose }
-        character={ { conditions: c_currentConditions } }
-        update={ { conditions: setCurrentConditions } }
+
+      <EditConditions
+        open={editConditions}
+        handleClose={handleClose}
+        character={{ conditions: c_currentConditions }}
+        update={{ conditions: setCurrentConditions }}
       />
     </Card>
   )
