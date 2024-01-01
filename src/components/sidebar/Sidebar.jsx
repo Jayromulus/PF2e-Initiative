@@ -6,7 +6,7 @@ import './Sidebar.css';
 import AddCharacter from "../characterCard/addCharacter/AddCharacter";
 import { useState } from "react";
 
-function Sidebar() {
+function Sidebar({ characters, setCharacters }) {
   const desktop = useMediaQuery('(min-width: 600px)');
   const [name, setName] = useState('');
   const [maxHP, setMaxHP] = useState(0);
@@ -21,10 +21,20 @@ function Sidebar() {
     setAddDisplay(false);
   }
 
+  function addCharacter() {
+    setCharacters([...characters, { name, maxHP, currentHP: maxHP, npc, conditions: [] }])
+    setAddDisplay(false);
+    setName('');
+    setMaxHP(0);
+    setNPC(false);
+  }
+
   // console.log({ desktop })
 
   return (
-    <div className="sidebar">
+    <div 
+      className="sidebar"
+    >
       <Grid container onClick={handleOpen}>
         <Grid item xs={6} md={2} className="icon-center"><PersonAddIcon sx={{ width: '50px', height: '50px' }} className="sidebar-icon" /></Grid>
         {desktop && <Grid item xs={10} className="sidebar-text" sx={{ pt: 1 }}><p>Add New Character</p></Grid>}
@@ -58,7 +68,7 @@ function Sidebar() {
         <p style={{ paddingLeft: '1.6em' }}>Status icons come from <a href="https://www.reddit.com/r/Pathfinder2e/comments/g19a98/roll20_token_markers_pathfinder_2e_conditions/" target="_blank" rel="noreferrer">this reddit post by FatMani</a></p>
       </Grid> */}
 
-      <AddCharacter character={{ name, maxHP, npc }} update={{ name: setName, maxHP: setMaxHP, npc: setNPC }} open={addDisplay} handleClose={handleClose} />
+      <AddCharacter character={{ name, maxHP, npc }} update={{ name: setName, maxHP: setMaxHP, npc: setNPC, addCharacter }} open={addDisplay} handleClose={handleClose} />
     </div>
   )
 }

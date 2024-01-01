@@ -1,10 +1,6 @@
 import CharacterCard from "../../components/characterCard/CharacterCard";
-import exampleCharacters from '../../data/characters';
-import { useState } from 'react';
 
-function CardList() {
-  const [characters, setCharacters] = useState(exampleCharacters);
-
+function CardList({ characters, setCharacters }) {
   function updatePosition(direction, current) {
     if(direction === 'up' && current !== 0)
       setCharacters([...characters.slice(0, current - 1), characters[current], ...characters.slice(current - 1, current), ...characters.slice(current + 1)]);

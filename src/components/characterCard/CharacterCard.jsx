@@ -5,9 +5,10 @@ import conditions from '../../data/conditions';
 // import EditIcon from '@mui/icons-material/Edit';
 // import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useState, useEffect } from "react";
-import EditCharacter from "./characterEdit/EditCharacter";
+import EditCharacter from "./editCharacter/EditCharacter";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import EditConditions from "./editConditions/EditConditions";
 
 // name, current and max hp, condition list, some way to edit the hp and some way to move the card(?)
 function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updatePosition, removeFromList }) {
@@ -22,6 +23,8 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
   // const [characterInList, setCharacterInList] = useState(true);
   const [editDisplay, setEditDisplay] = useState(false);
 
+  const [editConditions, setEditConditions] = useState(false);
+
   // for some reason this is required in order to update the cards. I really have no idea why this would be necessary but Jojo and Borg say it could be something to do with the mounted cards having access to the states which are not being updated when the array proper is being updated, which is stopping the re-render
   useEffect(() => { setName(name); }, [name]);
   useEffect(() => { setCurrentHP(currentHP); }, [currentHP]);
@@ -35,6 +38,11 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
 
   function handleClose() {
     setEditDisplay(false);
+    setEditConditions(false);
+  }
+
+  function conditionsDisplay() {
+    setEditConditions(true);
   }
 
   return (
@@ -51,6 +59,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
         </Grid>
         <Grid item xs={10}>
           <Grid container>
+            {/* character name and health bar */}
             <Grid item xs={12} md={6} onClick={cardDisplay}>
               <Grid container>
                 <Grid item xs={12} md={9} className='text-center'>
@@ -64,11 +73,21 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
                 </Grid>
               </Grid>
             </Grid>
+            {/* conditions display */}
             <Grid item xs={12} md={5}>
-              <Grid container sx={{ py: 2 }} onClick={() => setCurrentConditions(c_currentConditions)}>
+              <Grid container sx={{ py: 2 }} onClick={conditionsDisplay}>
                 {Object.keys(conditions).filter(key => c_currentConditions?.includes(key)).map((cond, ind) =>
                   <Grid key={ind} item xs={3} md={1} sx={{ textAlign: 'center' }}>
-                    <img className="current-condition" src={conditions[cond].img} width="30" alt={conditions[cond].name} key={ind} />
+                    <img 
+                      className="current-condition" 
+                      src={conditions[cond].img} 
+                      width="30" 
+                      alt={conditions[cond].name} 
+                      key={ind} 
+                      // style={{
+                      //   filter: 'brightness(0.9) invert(.7) sepia(.9) hue-rotate(210deg) saturate(1000%)'
+                      // }} 
+                    />
                   </Grid>
                 )}
               </Grid>
@@ -93,6 +112,13 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
           npc: setNPC,
           delete: removeFromList
         }} />
+      
+      <EditConditions 
+        open={ editConditions }
+        handleClose={ handleClose }
+        character={ { conditions: c_currentConditions } }
+        update={ { conditions: setCurrentConditions } }
+      />
     </Card>
   )
 }

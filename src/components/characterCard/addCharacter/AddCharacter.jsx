@@ -21,6 +21,7 @@ function AddCharacter({ open, handleClose, character, update }) {
         <Grid container>
           <Grid item xs={9} md={7} sx={{ width: '100%', textAlign: 'center', pl: 4 }}>
             <TextField
+              error={ character.name === '' }
               label="Name"
               variant='filled'
               value={character.name}
@@ -31,11 +32,13 @@ function AddCharacter({ open, handleClose, character, update }) {
 
           <Grid item xs={9} md={3} sx={{ width: '100%', textAlign: 'center', pl: 2 }}>
             <TextField
+              error={ !character.npc && character.maxHP <= 0 }
               label="Max HP"
               variant='filled'
               value={character.maxHP}
               onChange={e => update.maxHP(e.target.value)}
               sx={{ pb: 4, width: '95%' }}
+              disabled={ character.npc }
             />
           </Grid>
 
@@ -57,7 +60,7 @@ function AddCharacter({ open, handleClose, character, update }) {
               color="main"
               style={{ width: '100%', height: '100%' }}
               sx={{ color: 'background.main', ':hover': { color: 'background.card' } }}
-              onClick={() => console.log('add character', {character})}
+              onClick={update.addCharacter}
             >
               <b>ADD CHARACTER</b>
             </Button>
