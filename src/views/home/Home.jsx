@@ -2,13 +2,28 @@ import { Box, Grid, useMediaQuery } from "@mui/material"
 // import Grid from '@mui/material/Unstable_Grid2'
 import Sidebar from "../../components/sidebar/Sidebar"
 import CardList from "../cardList/CardList"
-import exampleCharacters from '../../data/characters';
-import { useState } from "react";
+// import exampleCharacters from '../../data/characters';
+import { useEffect, useState } from "react";
 
 function Home() {
   const desktop = useMediaQuery('(min-width: 600px)');
 
-  const [characters, setCharacters] = useState(exampleCharacters);
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    setCharacters(JSON.parse(localStorage.characters) ?? []);
+  }, [])
+
+  // useEffect(() => {
+  //   // localStorage.characters = JSON.stringify(characters);
+  //   // console.log({ characters });
+  //   updateStorage();
+  // }, [characters]);
+
+  function updateStorage() {
+    console.log('updating storage')
+    localStorage.characters = JSON.stringify(characters);
+  }
 
   return (
     <Box sx={{ bgcolor: 'background.main', width: '100vw', height: '100vh', m: 0, color: 'text.black' }}>
@@ -23,7 +38,7 @@ function Home() {
         }
         <Grid item xs={12} sm={8} lg={9} sx={{ px: 4, overflowy: 'scroll' }}>
           <div>
-            <CardList characters={characters} setCharacters={setCharacters} />
+            <CardList updateStorage={updateStorage} characters={characters} setCharacters={setCharacters} />
           </div>
         </Grid>
       </Grid>

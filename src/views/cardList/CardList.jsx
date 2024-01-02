@@ -1,6 +1,6 @@
 import CharacterCard from "../../components/characterCard/CharacterCard";
 
-function CardList({ characters, setCharacters }) {
+function CardList({ characters, setCharacters, updateStorage }) {
   function updatePosition(direction, current) {
     if(direction === 'up' && current !== 0)
       setCharacters([...characters.slice(0, current - 1), characters[current], ...characters.slice(current - 1, current), ...characters.slice(current + 1)]);
@@ -16,7 +16,7 @@ function CardList({ characters, setCharacters }) {
     <div className="list-container" style={{ overflowY: 'scroll', height: '100vh' }}>
       {
         characters.map((char, index) => (
-          <CharacterCard {...char} updatePosition={(dir) => updatePosition(dir, index)} removeFromList={() => removeFromList(index)} key={index} />
+          <CharacterCard index={index} characters={{ value: characters, update: setCharacters }} updateStorage={updateStorage} {...char} updatePosition={(dir) => updatePosition(dir, index)} removeFromList={() => removeFromList(index)} key={index} />
         ))
       }
     </div>

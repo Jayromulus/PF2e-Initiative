@@ -11,7 +11,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import EditConditions from "./editConditions/EditConditions";
 
 // name, current and max hp, condition list, some way to edit the hp and some way to move the card(?)
-function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updatePosition, removeFromList }) {
+function CharacterCard({ characters, index, name, currentHP, maxHP, npc, currentConditions, updatePosition, removeFromList, updateStorage }) {
   // const desktop = useMediaQuery('(min-width: 600px)');
 
   const [c_name, setName] = useState(name);
@@ -25,12 +25,14 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
 
   const [editConditions, setEditConditions] = useState(false);
 
+  useEffect(updateStorage, [c_name, c_currentHP, c_maxHP, c_npc, c_currentConditions, updateStorage]);
+
   // for some reason this is required in order to update the cards. I really have no idea why this would be necessary but Jojo and Borg say it could be something to do with the mounted cards having access to the states which are not being updated when the array proper is being updated, which is stopping the re-render
-  useEffect(() => { setName(name); }, [name]);
-  useEffect(() => { setCurrentHP(currentHP); }, [currentHP]);
-  useEffect(() => { setMaxHP(maxHP); }, [maxHP]);
-  useEffect(() => { setNPC(npc); }, [npc]);
-  useEffect(() => { setCurrentConditions(currentConditions); }, [currentConditions]);
+  useEffect(() => { setName(name); updateCharacter() }, [name]);
+  useEffect(() => { setCurrentHP(currentHP); updateCharacter() }, [currentHP]);
+  useEffect(() => { setMaxHP(maxHP); updateCharacter() }, [maxHP]);
+  useEffect(() => { setNPC(npc); updateCharacter() }, [npc]);
+  useEffect(() => { setCurrentConditions(currentConditions); updateCharacter() }, [currentConditions]);
 
   function cardDisplay() {
     setEditDisplay(true);
@@ -43,6 +45,22 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
 
   function conditionsDisplay() {
     setEditConditions(true);
+  }
+
+  function updateCharacter() {
+    console.log(c_currentConditions);
+
+    localStorage.characters = JSON.stringify([
+      [...characters.value.slice(0, index)],
+      {
+        name: c_name,
+        currentHP: c_currentHP,
+        maxHP: c_maxHP,
+        npc: c_npc,
+        conditions: [...c_currentConditions ?? []]
+      },
+      [...characters.value.slice(index + 1)]
+    ]);
   }
 
   return (
@@ -62,14 +80,14 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
             {/* character name and health bar */}
             <Grid item xs={12} md={6} onClick={cardDisplay}>
               <Grid container>
-                <Grid item xs={12} md={9} className='text-center' 
+                <Grid item xs={12} md={9} className='text-center'
                 // style={{
                 //   filter: 'invert(4%) sepia(82%) saturate(5032%) hue-rotate(235deg) brightness(94%) contrast(97%)'
                 // }}
                 >
                   <h2>{c_name}</h2>
                 </Grid>
-                <Grid item xs={12} md={3} className='text-center' 
+                <Grid item xs={12} md={3} className='text-center'
                 // style={{
                 //   filter: 'invert(4%) sepia(82%) saturate(5032%) hue-rotate(235deg) brightness(94%) contrast(97%)'
                 // }}
@@ -125,7 +143,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
       <EditConditions
         open={editConditions}
         handleClose={handleClose}
-        character={{ conditions: c_currentConditions }}
+        character={{ conditions: c_currentConditions ?? [] }}
         update={{ conditions: setCurrentConditions }}
       />
     </Card>
