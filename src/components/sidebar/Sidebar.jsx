@@ -9,7 +9,7 @@ import { useState } from "react";
 function Sidebar({ characters, setCharacters }) {
   const desktop = useMediaQuery('(min-width: 600px)');
   const [name, setName] = useState('');
-  const [maxHP, setMaxHP] = useState(0);
+  const [maxHP, setMaxHP] = useState('');
   const [npc, setNPC] = useState(false);
   const [addDisplay, setAddDisplay] = useState(false);
 
@@ -51,7 +51,7 @@ function Sidebar({ characters, setCharacters }) {
 
       <Grid container sx={{ pb: 4 }}>
         {
-          Object.keys(conditions).map((cond, ind) => {
+          Object.keys(conditions)?.map((cond, ind) => {
             let current = conditions[cond];
             return (
               <Grid item xs={6} sm={4} key={ind}>

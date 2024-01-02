@@ -29,7 +29,7 @@ function EditConditions({ open, handleClose, character, update }) {
       <DialogContent sx={{ bgcolor: 'background.card', px: 0, pb: 4 }}>
         <Grid container>
           {
-            Object.keys(conditions).map((cond, ind) => {
+            Object.keys(conditions)?.map((cond, ind) => {
               let current = conditions[cond];
               return (
                 <Grid item xs={4} sm={2} key={ind} className="icon-center" sx={{ p: 2 }}>
@@ -40,7 +40,7 @@ function EditConditions({ open, handleClose, character, update }) {
                     className="condition-icon" 
                     style={{ 
                       opacity: 
-                        character.conditions.includes(current.name.toLowerCase()) ? 
+                        character.conditions?.includes(current.name.toLowerCase()) ? 
                           '100%' : 
                           '33%', 
                       // filter: 

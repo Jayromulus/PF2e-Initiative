@@ -60,7 +60,7 @@ function AddCharacter({ open, handleClose, character, update }) {
               color="main"
               style={{ width: '100%', height: '100%' }}
               sx={{ color: 'background.main', ':hover': { color: 'background.card' } }}
-              onClick={update.addCharacter}
+              onClick={character.name && (character.npc || character.maxHP) ? update.addCharacter : () => console.log('cant add empty character')}
             >
               <b>ADD CHARACTER</b>
             </Button>
