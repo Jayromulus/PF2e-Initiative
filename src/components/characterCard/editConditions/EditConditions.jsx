@@ -3,12 +3,13 @@ import conditions from "../../../data/conditions";
 
 function EditConditions({ open, handleClose, character, update }) {
   function editList(newCond) {
-    if (character.conditions.includes(newCond.toLowerCase())) {
+    if (character.conditions?.includes(newCond.toLowerCase()) && character.conditions[0]) {
       const newArr = [...character.conditions];
       newArr.splice(character.conditions.indexOf(newCond.toLowerCase()), 1);
       update.conditions([...newArr]);
     } else {
-      const newArr = [...character.conditions];
+      console.log(character.conditions)
+      const newArr = character.conditions ? [...character.conditions] : [];
       newArr.push(newCond.toLowerCase());
       update.conditions([...newArr]);
     }
@@ -40,7 +41,7 @@ function EditConditions({ open, handleClose, character, update }) {
                     className="condition-icon" 
                     style={{ 
                       opacity: 
-                        character.conditions.includes(current.name.toLowerCase()) ? 
+                        character.conditions?.includes(current.name.toLowerCase()) ? 
                           '100%' : 
                           '33%', 
                       // filter: 
