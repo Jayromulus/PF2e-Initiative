@@ -3,7 +3,7 @@ import conditions from "../../../data/conditions";
 
 function EditConditions({ open, handleClose, character, update }) {
   function editList(newCond) {
-    if (character.conditions.includes(newCond.toLowerCase())) {
+    if (character.conditions?.includes(newCond.toLowerCase())) {
       const newArr = [...character.conditions];
       newArr.splice(character.conditions.indexOf(newCond.toLowerCase()), 1);
       update.conditions([...newArr]);
