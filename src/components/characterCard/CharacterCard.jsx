@@ -69,7 +69,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
                 >
                   <h2>{c_name}</h2>
                 </Grid>
-                <Grid item xs={12} md={3} className='text-center' 
+                <Grid item xs={12} md={3} className='text-right' 
                 // style={{
                 //   filter: 'invert(4%) sepia(82%) saturate(5032%) hue-rotate(235deg) brightness(94%) contrast(97%)'
                 // }}
