@@ -1,9 +1,18 @@
-import { Button, Dialog, DialogContent, Grid, Slider, TextField } from "@mui/material";
+import { Button, Dialog, DialogContent, Grid, Input, Slider, TextField } from "@mui/material";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useState } from "react";
 
 function EditCharacter({ editDisplay, handleClose, character, update }) {
+  const [damage, setDamage] = useState(0);
+
   function formatLabel() {
     return character.currentHP;
+  }
+
+  function dealDamage() {
+    update.maxHP(parseInt(character.maxHP) + parseInt(damage));
+    setDamage(0);
+    handleClose();
   }
 
   return (
@@ -47,7 +56,7 @@ function EditCharacter({ editDisplay, handleClose, character, update }) {
               color="main"
               style={{ width: '100%', height: '65%' }}
               sx={{ color: 'background.main', ':hover': { color: 'background.card' } }}
-              onClick={ () => { update.delete(); handleClose(); } }
+              onClick={() => { update.delete(); handleClose(); }}
             >
               <DeleteForeverIcon />
             </Button>
@@ -78,26 +87,50 @@ function EditCharacter({ editDisplay, handleClose, character, update }) {
                   marks={[{ value: 0, label: '0' }, { value: 100, label: `${character.maxHP}` }]}
                 />
                 :
-                <Slider
-                  aria-label="healthbar"
-                  disabled
-                // defaultValue={character.currentHP / character.maxHP}
-                // value={(character.currentHP / character.maxHP) * 100}
-                // onChange={e => update.currentHP(Math.floor(character.maxHP * (e.target.value / 100)))}
-                // step={1 / character.maxHP}
-                // valueLabelFormat={formatLabel}
-                // valueLabelDisplay="auto"
 
-                // color={
-                //   (character.currentHP / character.maxHP) * 100 > 66 ?
-                //     'highHealth' :
-                //     (character.currentHP / character.maxHP) * 100 > 33 ?
-                //       'midHealth' :
-                //       'lowHealth'
-                // }
-                // color={'primary'}
-                // marks={[{ value: 0, label: '0' }, { value: 100, label: `${character.maxHP}` }]}
-                />
+                <Grid container>
+                  <Grid item xs={8}>
+
+                    <TextField
+                      label="Incoming Damage"
+                      variant='filled'
+                      value={damage > 0 ? damage : ''}
+                      onChange={e => setDamage(e.target.value)}
+                      sx={{ pb: 4, width: '95%' }}
+                    />
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      variant="contained"
+                      color="main"
+                      style={{ width: '100%', height: '65%' }}
+                      sx={{ color: 'background.main', ':hover': { color: 'background.card' } }}
+                      onClick={dealDamage}
+                    >
+                      Damage
+                    </Button>
+                  </Grid>
+                </Grid>
+              // <Slider
+              //   aria-label="healthbar"
+              //   disabled
+              // // defaultValue={character.currentHP / character.maxHP}
+              // // value={(character.currentHP / character.maxHP) * 100}
+              // // onChange={e => update.currentHP(Math.floor(character.maxHP * (e.target.value / 100)))}
+              // // step={1 / character.maxHP}
+              // // valueLabelFormat={formatLabel}
+              // // valueLabelDisplay="auto"
+
+              // // color={
+              // //   (character.currentHP / character.maxHP) * 100 > 66 ?
+              // //     'highHealth' :
+              // //     (character.currentHP / character.maxHP) * 100 > 33 ?
+              // //       'midHealth' :
+              // //       'lowHealth'
+              // // }
+              // // color={'primary'}
+              // // marks={[{ value: 0, label: '0' }, { value: 100, label: `${character.maxHP}` }]}
+              // />
             }
           </Grid>
         </Grid>

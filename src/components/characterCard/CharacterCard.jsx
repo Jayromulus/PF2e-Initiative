@@ -74,7 +74,7 @@ function CharacterCard({ name, currentHP, maxHP, npc, currentConditions, updateP
                 //   filter: 'invert(4%) sepia(82%) saturate(5032%) hue-rotate(235deg) brightness(94%) contrast(97%)'
                 // }}
                 >
-                  {!c_npc && <h2 style={{ display: 'inline-block' }}>{c_currentHP}/{c_maxHP}</h2>}
+                  {<h2 style={{ display: 'inline-block' }}>{ !c_npc ? c_currentHP + '/' + c_maxHP : c_maxHP }</h2>}
                 </Grid>
                 <Grid item xs={12}>
                   <HealthBar current={c_currentHP} max={c_maxHP} npc={c_npc} />
