@@ -15,6 +15,12 @@ function EditCharacter({ editDisplay, handleClose, character, update }) {
     handleClose();
   }
 
+  function dealDamagePlayer() {
+    update.currentHP(parseInt(character.currentHP) - parseInt(damage));
+    setDamage(0);
+    handleClose();
+  }
+
   return (
     <Dialog
       open={editDisplay}
@@ -65,27 +71,52 @@ function EditCharacter({ editDisplay, handleClose, character, update }) {
           <Grid item xs={12} sx={{ px: 6 }} >
             {
               !character.npc ?
-                <Slider
-                  aria-label="healthbar"
-                  defaultValue={character.currentHP / character.maxHP}
-                  value={(character.currentHP / character.maxHP) * 100}
-                  onChange={e => update.currentHP(Math.floor(character.maxHP * (e.target.value / 100)))}
-                  step={1 / character.maxHP}
-                  valueLabelFormat={formatLabel}
-                  valueLabelDisplay="auto"
+                <>
+                  <Slider
+                    aria-label="healthbar"
+                    defaultValue={character.currentHP / character.maxHP}
+                    value={(character.currentHP / character.maxHP) * 100}
+                    onChange={e => update.currentHP(Math.floor(character.maxHP * (e.target.value / 100)))}
+                    step={1 / character.maxHP}
+                    valueLabelFormat={formatLabel}
+                    valueLabelDisplay="auto"
 
-                  color={
-                    (character.currentHP / character.maxHP) * 100 === 0 ?
-                      'dying' :
-                      (character.currentHP / character.maxHP) * 100 > 66 ?
-                        'highHealth' :
-                        (character.currentHP / character.maxHP) * 100 > 33 ?
-                          'midHealth' :
-                          'lowHealth'
-                  }
-                  // color={'primary'}
-                  marks={[{ value: 0, label: '0' }, { value: 100, label: `${character.maxHP}` }]}
-                />
+                    color={
+                      (character.currentHP / character.maxHP) * 100 === 0 ?
+                        'dying' :
+                        (character.currentHP / character.maxHP) * 100 > 66 ?
+                          'highHealth' :
+                          (character.currentHP / character.maxHP) * 100 > 33 ?
+                            'midHealth' :
+                            'lowHealth'
+                    }
+                    // color={'primary'}
+                    marks={[{ value: 0, label: '0' }, { value: 100, label: `${character.maxHP}` }]}
+                  />
+                  <Grid container>
+                    <Grid item xs={8}>
+
+                      <TextField
+                        label="Incoming Damage"
+                        variant='filled'
+                        value={damage > 0 ? damage : ''}
+                        onChange={e => setDamage(e.target.value)}
+                        sx={{ pb: 4, width: '95%' }}
+                      />
+                    </Grid>
+                    <Grid item xs={4}>
+                      <Button
+                        variant="contained"
+                        color="main"
+                        style={{ width: '100%', height: '65%' }}
+                        sx={{ color: 'background.main', ':hover': { color: 'background.card' } }}
+                        onClick={dealDamagePlayer}
+                      >
+                        Damage
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </>
                 :
 
                 <Grid container>
