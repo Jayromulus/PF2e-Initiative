@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function EditCharacter({ editDisplay, handleClose, character, update }) {
   const [damage, setDamage] = useState(0);
+  const [heal, setHeal] = useState(0)
 
   function formatLabel() {
     return character.currentHP;
@@ -18,6 +19,12 @@ function EditCharacter({ editDisplay, handleClose, character, update }) {
   function dealDamagePlayer() {
     update.currentHP(parseInt(character.currentHP) - parseInt(damage));
     setDamage(0);
+    handleClose();
+  }
+
+  function healDamagePlayer() {
+    update.currentHP(parseInt(character.currentHP) + parseInt(heal));
+    setHeal(0);
     handleClose();
   }
 
@@ -114,6 +121,30 @@ function EditCharacter({ editDisplay, handleClose, character, update }) {
                       >
                         Damage
                       </Button>
+                    </Grid>
+
+                    <Grid container>
+                      <Grid item xs={8}>
+
+                        <TextField
+                          label="Incoming Healing"
+                          variant='filled'
+                          value={heal > 0 ? heal : ''}
+                          onChange={e => setHeal(e.target.value)}
+                          sx={{ pb: 4, width: '95%' }}
+                        />
+                      </Grid>
+                      <Grid item xs={4}>
+                        <Button
+                          variant="contained"
+                          color="main"
+                          style={{ width: '100%', height: '65%' }}
+                          sx={{ color: 'background.main', ':hover': { color: 'background.card' } }}
+                          onClick={healDamagePlayer}
+                        >
+                          Heal
+                        </Button>
+                      </Grid>
                     </Grid>
                   </Grid>
                 </>
